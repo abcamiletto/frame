@@ -1,0 +1,44 @@
+[project]
+name = "framevision"
+version = "0.1.0"
+description = "Official code for the FRAME paper (CVPR 2025)"
+readme = "README.md"
+authors = [
+    { name = "Andrea Boscolo Camiletto", email = "aboscolo@mpi-inf.mpg.de" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "humanize>=4.12.1",
+    "lightning>=2.5.0.post0",
+    "lovely-tensors>=0.1.18",
+    "opencv-python-headless>=4.11.0.86",
+    "rich>=13.9.4",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "typer>=0.15.2",
+]
+
+[project.scripts]
+dataloader = "dataloader:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 140
+lint.ignore = ["E741", "E743", "F722"] # ignore ambiguous variable names
+lint.extend-select = ["I"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401", "F403"] # exclude imports from __init__.py
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+torchvision = [{ index = "pytorch-cu118", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
