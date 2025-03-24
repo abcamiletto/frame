@@ -38,7 +38,7 @@ python scripts/loop.py --help
 
 ## CAD Models
 
-🚧
+Instructions on how to print the CAD models can be found [here](https://github.com/abcamiletto/frame-cad).
 
 ## Citation
 
